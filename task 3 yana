@@ -1,0 +1,33 @@
+# функция для ввода матриц
+def input_matrix(rows, cols):
+    matrix = []
+    for i in range(rows):
+        row = []
+        for j in range(cols):
+            element = int(input("Введите элемент матрицы [" + str(i) + "][" + str(j) + ']: '))
+            row.append(element)
+        matrix.append(row)
+    return (matrix)
+
+# ввод размеров матриц
+n = int(input('Введите количество строк первой матрицы: '))
+m = int(input('Введите количество столбцов первой матрицы: '))
+k = int(input('Введите количество строк второй матрицы: '))
+h = int(input('Введите количество столбцов второй матрицы: '))
+
+# проверка на возможность умножения
+if m != k:
+    print("Нельзя произвести умножение")
+else:
+    # ввод матриц
+    print('Введите элементы первой матрицы')
+    matrix1 = input_matrix(n, m)
+    print('Введите элементы второй матрицы')
+    matrix2 = input_matrix(k, h)
+    # перемножение матриц
+    final_matrix = [[0] * h for _ in range(n)]
+    for i in range (n):
+        for j in range(h):
+            for t in range(m):
+                final_matrix[i][j] += matrix1[i][t] * matrix2[t][j]
+    print(final_matrix)
